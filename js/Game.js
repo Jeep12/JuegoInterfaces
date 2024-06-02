@@ -1,8 +1,9 @@
 "use strict";
 
 import Runner from './Runner.js';
-
+import Enemy from './Enemy.js';
 let runner = new Runner();
+let enemys = [];
 
 
 document.addEventListener('keydown', (event) => {
@@ -26,17 +27,21 @@ document.addEventListener('keydown', (event) => {
 });
 
 setInterval(gameLoop, 50);
-setInterval(generarEnemigo, 5544);
+setInterval(createEnemy, 5000);
 
 
 
 
 function gameLoop() {
   
+
+    enemys.forEach(element => element.move());
 }
 
 
 
-function generarEnemigo() {
+function createEnemy() {
 
+    let enemy = new Enemy();
+    enemys.push(enemy);
 }

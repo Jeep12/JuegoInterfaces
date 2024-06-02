@@ -1,0 +1,16 @@
+.coin {
+    height: 129px;
+    width: 15px;
+    background:url('../assets/coins/coint.png');
+    background-position: 18% center;
+    
+    background-repeat: no-repeat;
+    animation: play .8s steps(3) infinite;
+
+  }
+
+@keyframes play {
+  
+    50% { background-position: 90% center; }
+    100%{background-position: 18% center;}
+  }
