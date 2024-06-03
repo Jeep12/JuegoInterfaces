@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/709d08b542.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/game.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="wrapper-stats">
+        <div class="stats">
+            <div class="score"></div>
+            <div class="lifes"><span id="countLifes"></span> <i class="fa-solid fa-heart"></i></div>
+            <div class="time"></div>
+            <div class="pause"><i class="fa-solid fa-pause"></i></div>
+            <div class="mute"><i class="fa-solid fa-volume-xmark"></i> </div>
+        </div>
+    </div>
     <div id="wrapper-game">
         <div id="sky"></div>
         <div id="jungle_bg"></div>
@@ -17,9 +28,10 @@
         <div id="back_trees"></div>
         <div id="runner" class="runCharacter"></div>
 
-        <div class="coin"></div>
     </div>
-
+    <div class="wrapper-restore-game">
+        <button class="restoreGame">Volver a jugar</button>
+    </div>
     <script type="module" src="js/Game.js"></script>
 </body>
 </html>
