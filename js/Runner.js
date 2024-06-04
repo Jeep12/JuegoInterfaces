@@ -15,7 +15,9 @@ export default class Runner  {
     }
 
     dead(){
-
+        this.clean();
+  
+        this.runner.classList.add("dead");
         
     }
     status() {
@@ -23,8 +25,9 @@ export default class Runner  {
     }
 
     resetPosition() {
-        this.posX = 0;
+        this.posX = nu
         this.posY = 0;
+    
         this.transform(0, 0); // También aplica la transformación a la posición 0,0
     }
     pause(){
@@ -111,10 +114,10 @@ export default class Runner  {
         this.runner.classList.remove("runCharacter");
         this.runner.classList.remove("jump");
         this.runner.classList.remove("fall");
-
-        //REMUEVO 
+        this.runner.classList.remove("dead");
+        //REMUEVO   
         this.runner.removeEventListener("animationend", this.startDrop);
-        this.runner.removeEventListener("animationend", this.finalizarCaida);
+        this.runner.removeEventListener("animationend", this.endDrop);
     }
 
 

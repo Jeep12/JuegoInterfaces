@@ -5,26 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/709d08b542.js" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="css/game.css">
-    <title>JJE</title>
+    <title>Encabo_4</title>
 </head>
 
 <body id="body">
-    
-    <audio id="audioGame" >
+
+    <audio id="audioGame">
         <source type="audio/mp3" src="./assets/soundgame.mp3">
-        </audio>
+    </audio>
+
     <div class="wrapper-stats">
         <div class="stats">
             <div class="score"> </div>
             <div class="lifes"><span id="countLifes"></span> <i class="fa-solid fa-heart"></i></div>
             <div class="time"></div>
-            <div class="pause"> <button  id="pauseButton"><i class="fa-solid fa-pause"></i></button></div>
-            <div class="mute"> <button id="muteButton"><i class="fa-solid fa-volume-xmark"></i></button> </div>
+            <div class="pause"> <button id="pauseButton"><i class="fa-solid fa-pause"></i></button></div>
+            <div class="mute"> <button id="muteButton"><i class="fa-solid fa-volume-high"></i></button> </div>
             <div><a id="goOutButton"> <i style="color: white;" class="fa-solid fa-right-to-bracket"></i> </a></div>
         </div>
     </div>
+
+
     <div id="wrapper-game">
         <div id="sky"></div>
         <div id="jungle_bg"></div>
@@ -36,11 +38,12 @@
         <div id="fireflys"></div>
         <div id="treeface"></div>
         <div id="runner" class="runCharacter"></div>
-
     </div>
+
     <div class="wrapper-restore-game">
         <button class="restoreGame">Volver a jugar</button>
     </div>
+
     <script type="module" src="js/Game.js"></script>
 </body>
 

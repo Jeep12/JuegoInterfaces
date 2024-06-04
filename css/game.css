@@ -54,6 +54,23 @@ body {
 
 }
 
+.dead {
+    background: url("../assets/characters/Runner/Dead.png") !important;
+    background-size: 768px 128px !important;
+    animation: dead 2s steps(6) !important;
+}
+
+@keyframes dead {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: 768px;
+
+    }
+}
+
 .runEnemy {
     animation: runEnemy .3s steps(9) infinite;
 }
@@ -103,7 +120,7 @@ body {
     height: 100%;
     position: absolute;
     left: -149px;
-    top: -50px;
+    top: -49px;
     border-right: 50px solid #3E4E31;
     border-bottom: 50px solid transparent;
 
@@ -116,7 +133,7 @@ body {
 
     position: absolute;
     right: -149px;
-    top: -50px;
+    top: -49px;
     border-left: 50px solid #3E4E31;
     border-bottom: 50px solid transparent;
 

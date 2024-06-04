@@ -22,8 +22,13 @@ export default class Enemy {
 
     move() {
         // Mueve el enemigo hacia la izquierda
-            this.posX -= this.speed;
+        this.posX -= this.speed;
+        if (this.posX < 0-this.width) {
+            this.destroy();
+            
+        } else {
             this.transform(this.posX, this.posY);
+        }
 
 
     }
@@ -54,5 +59,9 @@ export default class Enemy {
     }
     getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    destroy() {
+        // Elimina el elemento del DOM
+        this.enemy.remove();
     }
 }

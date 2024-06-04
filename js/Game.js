@@ -4,7 +4,7 @@ import Runner from './Runner.js';
 import Enemy from './Enemy.js';
 document.addEventListener("DOMContentLoaded", () => {
 
-
+    //obtengo las capas con animacion parallax, para detener la misma
     const parallaxElements = document.querySelectorAll("#sky, #jungle_bg, #tree_and_bushes, #grasses, #lianas, #floor, #back_trees,#treeface,#fireflys");
 
     let runner = new Runner();
@@ -12,22 +12,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let isPaused = false;
     let enemyCreationInterval; // Variable para almacenar el intervalo de creación de enemigos
 
-
+    //muetra vida inicial
     let lifes = 3;
     let showLifes = document.getElementById("countLifes");
     showLifes.textContent = lifes;
-    //div  score
+    //muestra score inicial
     let showScore = document.querySelector(".score");
     let score = 0;
     showScore.textContent = score;
 
+    //muestra tiempo inicial
     let seconds = 0;
     let intervalCounter;
     // Guarda el intervalo para detenerlo más tarde si es necesario
     const counterElement = document.querySelector('.time');
     counterElement.textContent = `${seconds} `;
 
-    //Iniciar contador
+    //Inicia el contador de tiempo
     startCounter();
 
 
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     enemyCreationInterval = setInterval(createEnemy, 3000);
 
 
+    //runner.resetPosition() vuelve a posx 0, posy 0
     let restoreGame = document.querySelector('.restoreGame');
     restoreGame.addEventListener('click', function () {
         resumeGame();
@@ -77,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             score += 2;
             showScore.textContent = score;
 
+            //cada 200 de score decremeta el tiempo del interval
             if (score % 200 === 0) {
                 // Ajusta la velocidad de generación de enemigos
                 clearInterval(enemyCreationInterval); // Detiene el intervalo actual
@@ -84,26 +87,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 enemyCreationInterval = setInterval(createEnemy, enemyCreationSpeed);
             }
 
-            if (score % 100 ===0) {
-          
-                
+            if (score % 100 === 0) {
 
-            } 
+
+
+
+
+            }
+
+            //Recorre los enemigos en el game loop. mueve a los enemigos y detecta colision.
             enemys.forEach(element => {
                 element.move();
 
+                //si el enemigo colisiono con el runner primero detengo el juego
+                //segundo decremento la cantidad de vidas x 1
+                //tercero la muestro
+                //quinto si el nro vidas  es mayor a 0 y menor o igual a 3 se podria seguir jugando
+                //entonces muestro el boton de restoreGame, linea  65
+                //si se queda sin vidas, uso el boton confirm, si acepta el boton recarga la pagina y sino lo lleva al index
                 if (element.colition(document.getElementById('runner'))) {
                     pauseGame();
+                    
+              
                     lifes = lifes - 1;
                     showLifes.textContent = lifes;
                     if (lifes > 0 && lifes <= 3) {
                         wrapperRestoreGame.style.display = 'block';
+                        runner.dead();
+
                     } else {
                         let gameOver = confirm("Game Over! Quieres volver a jugar?");
                         if (gameOver) {
                             // Reiniciar el juego
                             window.location.reload();
-                        }else {
+                        } else {
                             window.location.href = "index.html";
 
                         }
@@ -114,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     function createEnemy() {
         if (!isPaused) {
             let enemy = new Enemy();
@@ -121,6 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+
+    //boton pausa, usa los metodos de pausa del juego.
 
     const pauseIcon = '<i class="fas fa-pause"></i>';
     const playIcon = '<i class="fas fa-play"></i>';
@@ -136,7 +156,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     // Pausar el juego
+    //detiene la creacion de enemigos
+    //y le remueve la clase paused a los elementos parallax
+    //recorre los enemigos generados hasta el momento y les remueve la animacion runEnemy
+    //remueve la animacion del runner
+    //y para el contador
     function pauseGame() {
+
         isPaused = true;
         toggleMute();
         clearInterval(enemyCreationInterval); // Detener la creación de enemigos
@@ -152,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // Reanudar el juego
+    //lo contrario a la pausa. agrega lo quitado.
     function resumeGame() {
         isPaused = false;
         toggleMute();
@@ -188,8 +214,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    let audio = document.getElementById('audioGame');
+    //inicio el audio del juego
 
+    let audio = document.getElementById('audioGame');
     audio.play();
     audio.loop = true;
 
@@ -200,10 +227,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function toggleMute() {
         if (audio.muted) {
             audio.muted = false;
-            muteButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>'; // Cambiar ícono a mute
+            muteButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>'; // Cambiar ícono a unmute
         } else {
             audio.muted = true;
-            muteButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>'; // Cambiar ícono a unmute
+            muteButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>'; // Cambiar ícono a mute
         }
     }
 
@@ -214,11 +241,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+    //boton para salir del juego y volver a index.html
     const goOutButton = document.getElementById("goOutButton");
 
     goOutButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevenir la acción por defecto del enlace
-        const confirmed = confirm("¿Estás seguro de que deseas salir?");
+        const confirmed = confirm("¿Estás seguro de que deseas salir? Perderas el puntaje acumulado");
         if (confirmed) {
             window.location.href = "index.html";
         }
@@ -226,20 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-    //PAUSO Y RESUMO  EL JUEGO CUANDO CAMBIA DE VENTANA
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            if (!isPaused) {
-                pauseGame();
-            }
-        } else {
-            
-                resumeGame();
-        
-        }
-    });
 });
 
 
