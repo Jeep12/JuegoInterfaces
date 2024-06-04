@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/709d08b542.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/game.css">
-    <title>Document</title>
+    <title>JJE</title>
 </head>
+
 <body>
+    <audio id="audioGame" >
+        <source type="audio/mp3" src="./assets/soundgame.mp3">
+        </audio>
     <div class="wrapper-stats">
         <div class="stats">
-            <div class="score"></div>
+            <div class="score"> </div>
             <div class="lifes"><span id="countLifes"></span> <i class="fa-solid fa-heart"></i></div>
             <div class="time"></div>
-            <div class="pause"><i class="fa-solid fa-pause"></i></div>
-            <div class="mute"><i class="fa-solid fa-volume-xmark"></i> </div>
+            <div class="pause"> <button  id="pauseButton"><i class="fa-solid fa-pause"></i></button></div>
+            <div class="mute"> <button id="muteButton"><i class="fa-solid fa-volume-xmark"></i></button> </div>
+            <div><a id="goOutButton"> <i style="color: white;" class="fa-solid fa-right-to-bracket"></i> </a></div>
         </div>
     </div>
     <div id="wrapper-game">
@@ -26,6 +32,8 @@
         <div id="grasses"></div>
         <div id="lianas"></div>
         <div id="back_trees"></div>
+        <div id="fireflys"></div>
+        <div id="treeface"></div>
         <div id="runner" class="runCharacter"></div>
 
     </div>
@@ -34,4 +42,5 @@
     </div>
     <script type="module" src="js/Game.js"></script>
 </body>
+
 </html>

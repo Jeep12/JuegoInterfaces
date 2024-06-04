@@ -64,7 +64,6 @@ export default class Runner extends Character {
             this.posY -= 50;
             this.transform(this.posX, this.posY);
             this.estaMoviendose = true;
-            console.log("pos y " + this.posY);
         }
     }
 
@@ -74,7 +73,6 @@ export default class Runner extends Character {
             this.transform(this.posX, this.posY);
 
             this.estaMoviendose = true;
-            console.log("pos y " + this.posY);
         }
     }
 

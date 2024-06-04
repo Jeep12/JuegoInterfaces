@@ -6,7 +6,7 @@ export default class Enemy {
         //lo mismo que el posicionX pero con el eje Y
         //le resto la altura del personaje y un numero aleatorio entre
         //0 y 250 para que no se salga del camino
-         this.posY = window.innerHeight-this.height-this.getRandomNumber(0,250); // Posición Y aleatoria entre 0 y 250 píxeles
+         this.posY = window.innerHeight-this.height-this.getRandomNumber(0,380); // Posición Y aleatoria entre 0 y 250 píxeles
  
         this.speed = 15;
 
