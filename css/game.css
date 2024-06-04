@@ -85,10 +85,14 @@ body {
     align-items: center;
     color: white;
     position: relative;
-    background-color:#3E4E31;
+    background: rgb(94, 117, 75);
+    background: radial-gradient(circle, rgba(94, 117, 75, 1) 0%, rgba(62, 78, 49, 1) 100%);
     filter: drop-shadow(0px 10px 5px black);
     font-family: 'Courier New', Courier, monospace;
     font-weight: 700;
+    text-shadow: 1px 1px 5px black;
+
+
 
 
 }
@@ -120,6 +124,14 @@ body {
 
 .stats div {
     padding: 10px;
+
+}
+
+.stats div i {
+    font-size: 20px;
+    cursor: pointer;
+    text-shadow: 1px 1px 5px black;
+
 }
 
 .lifes {}
@@ -132,7 +144,7 @@ body {
 .time {
     font-size: 70px;
     font-weight: 700;
-    padding: 5px;
+    padding: 20px;
 }
 
 #pauseButton {
@@ -293,10 +305,10 @@ body {
         animation: Parallax1360 11.5s linear infinite;
         position: absolute;
         top: 0px;
-        z-index: 6;
+        z-index: 5;
     }
 
-    #fireflys{
+    #fireflys {
         width: 100%;
         height: 1080px;
         background: url('./../assets/backgrounds/fireflys.png');
@@ -307,19 +319,20 @@ body {
         left: 0px;
         z-index: 3;
         filter: drop-shadow(0px 0px 10px yellow);
-        
+
     }
-    #treeface{
+
+    #treeface {
         width: 100%;
-        height: 780px;
+        height: 1080px;
         background: url('./../assets/backgrounds/tree_face.png');
-        background-size: 1360px 780px;
-        animation: Parallax1360 3s linear infinite;
+        background-size: 1920px 1080px;
+        animation: Parallax1920 3s linear infinite;
         position: absolute;
-        top: -50px;
+        top: -150px;
         left: 0px;
         z-index: 10;
-        
+
     }
 
 }
@@ -404,6 +417,7 @@ body {
         top: -150px;
         z-index: 3;
     }
+
     #lianas {
         width: 100%;
         height: 768px;
@@ -415,7 +429,8 @@ body {
         top: 0px;
         z-index: 6;
     }
-    #treeface{
+
+    #treeface {
         width: 100%;
         height: 780px;
         background: url('./../assets/backgrounds/tree_face.png');
@@ -425,7 +440,7 @@ body {
         top: -50px;
         left: 0px;
         z-index: 10;
-        
+
     }
 
 }
@@ -461,9 +476,10 @@ body {
         background-position: 0;
     }
 }
+
 @keyframes Paralax1920Y {
     0% {
-        background-position: 0 0    px;
+        background-position: 0 0 px;
     }
 
     100% {
@@ -496,9 +512,17 @@ body {
     border: none;
     text-transform: uppercase;
     font-weight: 700;
-    background-color: #3E4E31;
     color: white;
     border: none;
     filter: drop-shadow(0px 0px 10px black);
+    background: rgb(94, 117, 75);
+    background: radial-gradient(circle, rgba(94, 117, 75, 1) 0%, rgba(62, 78, 49, 1) 100%);
 
+}
+
+
+@media (width < 700px) {
+    body{
+        display: none;
+    }
 }

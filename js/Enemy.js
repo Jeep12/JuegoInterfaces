@@ -33,8 +33,8 @@ export default class Enemy {
     }
 
     colition(element) {
-        const rectEnemigo = this.adjustedRect(this.enemy.getBoundingClientRect(), 20); // Ajustar el rectángulo del enemigo
-        const rectElemento = this.adjustedRect(element.getBoundingClientRect(), 20); // Ajustar el rectángulo del elemento
+        const rectEnemigo = this.adjustedRect(this.enemy.getBoundingClientRect(), 25); // Ajustar el rectángulo del enemigo
+        const rectElemento = this.adjustedRect(element.getBoundingClientRect(), 25); // Ajustar el rectángulo del elemento
         
         // Verificar si los rectángulos de colisión ajustados se superponen
         return rectEnemigo.left < rectElemento.right &&

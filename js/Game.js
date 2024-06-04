@@ -84,6 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 enemyCreationInterval = setInterval(createEnemy, enemyCreationSpeed);
             }
 
+            if (score % 100 ===0) {
+          
+                
+
+            } 
             enemys.forEach(element => {
                 element.move();
 
@@ -98,6 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (gameOver) {
                             // Reiniciar el juego
                             window.location.reload();
+                        }else {
+                            window.location.href = "index.html";
+
                         }
                     }
                 }
@@ -130,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Pausar el juego
     function pauseGame() {
         isPaused = true;
+        toggleMute();
         clearInterval(enemyCreationInterval); // Detener la creación de enemigos
         document.getElementById('wrapper-game').classList.add('paused');
         parallaxElements.forEach(element => element.classList.add('paused'));
@@ -146,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Reanudar el juego
     function resumeGame() {
         isPaused = false;
-
+        toggleMute();
         enemyCreationInterval = setInterval(createEnemy, 5000); // Reanudar la creación de enemigos
         document.getElementById('wrapper-game').classList.remove('paused');
         parallaxElements.forEach(element => element.classList.remove('paused'));
@@ -207,11 +216,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const goOutButton = document.getElementById("goOutButton");
 
-    goOutButton.addEventListener("click", function(event) {
+    goOutButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevenir la acción por defecto del enlace
         const confirmed = confirm("¿Estás seguro de que deseas salir?");
         if (confirmed) {
             window.location.href = "index.html";
+        }
+    });
+
+
+
+
+    //PAUSO Y RESUMO  EL JUEGO CUANDO CAMBIA DE VENTANA
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (!isPaused) {
+                pauseGame();
+            }
+        } else {
+            
+                resumeGame();
+        
         }
     });
 });

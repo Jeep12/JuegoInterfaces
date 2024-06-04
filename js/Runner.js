@@ -1,8 +1,6 @@
-import Character from "./Character.js";
 
-export default class Runner extends Character {
+export default class Runner  {
     constructor() {
-        super();
         this.runner = document.getElementById("runner");
         this.velocidadMovimiento = 35; // Velocidad de movimiento del personaje
         this.posX = 0; // Nueva propiedad para almacenar la posición horizontal
@@ -16,6 +14,10 @@ export default class Runner extends Character {
         this.endDrop = this.endDrop.bind(this);
     }
 
+    dead(){
+
+        
+    }
     status() {
         return this.runner.getBoundingClientRect();
     }
